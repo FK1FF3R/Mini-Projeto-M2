@@ -1,0 +1,159 @@
+*{
+    list-style-type: none;
+    list-style: none;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --cor: #FAFAFA;
+    --verde: #B1D690;
+    --rosa: #FF77B7;
+    --amarelo: #FEEC37;
+    --laranja: #FFA24C;
+}
+
+header{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: -2rem;
+    align-items: center;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.033);
+    margin-top: -1rem;
+    padding-bottom: 1rem;
+}
+
+#img-logo{
+    width: 6rem;
+    height: 6rem;
+}
+
+.logo{
+    width: auto;
+    height: 100%;
+    background-color: none;
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo>h1{
+    color: var(--verde);
+}
+
+#Fit{
+    color: black;
+}
+
+#ponto{
+    color: var(--rosa);
+}
+
+
+ul>li{
+    display: inline-block;
+    font-size: 1.3rem;
+    padding: 1rem;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: underline;
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+#under-verde{
+    text-decoration-color: var(--verde);
+}
+
+#under-rosa{
+    text-decoration-color: var(--rosa);
+}
+
+
+body{
+    background-color: var(--cor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    gap: 2rem;
+}
+
+#cadastro{
+    background-color: blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 80%;
+    flex-wrap: wrap;
+}
+
+#imagem-capa{
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+}
+
+aside{
+    background-color: none;
+    width: 50%;
+    height: 100%;
+}
+
+article{
+    background-color: var(--amarelo);
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1{
+    font-size: 4rem;
+}
+
+form{
+    background-color: var(--laranja);
+    width: 80%;
+    height: 80%;
+    /* border: 0.5px solid black; */
+    box-shadow: 8px 0px 10px 0px rgb(0, 0, 0);
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+@media (max-width: 1000px){
+    #cadastro {
+        width: 100vw;
+        height: 100vh;
+        flex-direction: column; /* Stack elements vertically on smaller screens */
+      }
+
+      aside{
+        background-color: yellow;
+        width: 60vw;
+        height: 100%;
+    }
+}
