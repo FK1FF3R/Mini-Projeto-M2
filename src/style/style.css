@@ -1,33 +1,15 @@
-*{
-    list-style-type: none;
-    list-style: none;
-    border: 0;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root{
-    --cor: #FAFAFA;
-    --verde: #B1D690;
-    --rosa: #FF77B7;
-    --amarelo: #FEEC37;
-    --laranja: #FFA24C;
-}
-
 header{
-    height: 10%;
+    height: 9%;
     width: 100%;
     display: flex;
     justify-content: space-between;
     padding-left: 2rem;
     padding-right: 2rem;
-    padding-top: -2rem;
+    /* padding-top: -2rem; */
     align-items: center;
-    border-bottom: 1px solid rgb(0, 0, 0);
+    border-bottom: 2px solid rgb(0, 0, 0);
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.033);
-    margin-top: -1rem;
-    padding-bottom: 1rem;
+    /* padding-bottom: 1rem; */
 }
 
 #img-logo{
@@ -92,20 +74,18 @@ body{
     flex-direction: column;
     width: 100vw;
     height: 100vh;
-    gap: 2rem;
 }
 
 #cadastro{
-    background-color: blue;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 80%;
-    height: 80%;
+    width: 100vw;
+    height: 90%;
     flex-wrap: wrap;
 }
 
-#imagem-capa{
+.imagem-capa{
     width: 100%;
     height: 100%;
     object-fit:cover;
@@ -118,7 +98,7 @@ aside{
 }
 
 article{
-    background-color: var(--amarelo);
+    background-color: var(--amarelo) none;
     width: 50%;
     height: 100%;
     display: flex;
@@ -128,7 +108,11 @@ article{
 }
 
 h1{
-    font-size: 4rem;
+    font-size: var(--h1-size);
+}
+
+.img-mobile{
+    display: hidden;
 }
 
 form{
@@ -140,20 +124,82 @@ form{
     border-radius: 25px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
+    /* padding: 1rem; */
+    gap: 1rem;
+}
+
+label{
+    font-size: var(--label-font-size);
+}
+
+form :nth-child(3){
+    width: 80%;
+}
+
+form :nth-child(5),
+:nth-child(7)
+{
+    width: 30%;
+}
+
+input{
+    height: 4%;
+    text-align: center;
+    border: .5px solid black;
+    border-radius: 5px;
+}
+
+button{
+    width: 6rem;
+    height: 4rem;
+    background-color: var(--amarelo);
+    border-radius: 5px;
+    border: 2px solid black;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+button:hover{
+    cursor: pointer;
+    transform: scale(.95);
+    transition: .1s ease in;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 1000px){
-    #cadastro {
-        width: 100vw;
-        height: 100vh;
-        flex-direction: column; /* Stack elements vertically on smaller screens */
-      }
+    body{
+        gap: 2rem;
+    }
 
-      aside{
-        background-color: yellow;
-        width: 60vw;
+    header > nav{
+        display:none;
+    }
+
+    #cadastro,
+    article{
+        width: 100%;
+    }
+
+    aside{
+       display: none;
+    }
+
+    .mobile{
+        width: 100%;
         height: 100%;
+        object-fit: cover;
+        border-radius: 25px 25px 0 0;
+    }
+
+    .img-mobile{
+        width: 100%;
+        height: 40%;
+        border-radius: 25px 25px 0 0;
+        background-color: aqua;
+    }
+
+    form{
+        flex-grow: 1;
     }
 }

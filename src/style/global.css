@@ -1,0 +1,18 @@
+*{
+    list-style-type: none;
+    list-style: none;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --cor: #FAFAFA;
+    --verde: #B1D690;
+    --rosa: #FF77B7;
+    --amarelo: #FEEC37;
+    --laranja: #FFA24C;
+    --h1-size: 4rem;
+    --label-font-size: 2rem;
+}
