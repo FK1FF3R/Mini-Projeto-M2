@@ -16,7 +16,7 @@
 #header2{
     width: 100%;
     height: 6rem;
-    background-color: blue none;
+    background: linear-gradient(to bottom, rgb(0, 0, 0), rgba(0, 0, 0, 0));
     display: flex;
     align-items: center;;
     justify-content: flex-end;
@@ -113,7 +113,9 @@ aside{
     width: 50%;
     height: 100%;
     background-repeat: no-repeat;
-    object-fit: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 #h1-cadastro{
     width: 100%;
@@ -207,38 +209,24 @@ button:hover{
 }
 
 @media (max-width: 1000px){
-    body{
-        gap: 2rem;
-    }
 
-    header > nav{
-        display:none;
-    }
-
-    #cadastro,
-    article{
+    #header1{
         width: 100%;
+        background-color: green;
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.162);
     }
 
     aside{
-       display: none;
+        display: none;
     }
 
-    .mobile{
+    article{
         width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 25px 25px 0 0;
-    }
-
-    .img-mobile{
-        width: 100%;
-        height: 40%;
-        border-radius: 25px 25px 0 0;
-        background-color: aqua;
+        padding: 0;
+        gap: 1rem
     }
 
     form{
-        flex-grow: 1;
+        width: 95%;
     }
 }
