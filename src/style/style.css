@@ -23,15 +23,24 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    backdrop-filter: blur(4px);
 }
 
-.modal-content {
+#modal-content {
     background-color: #fff;
     padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
     border-radius: 5px;
     text-align: center;
-    border: 2px solid black;
-    width: 300px;
+    font-family: var(--fonte2);
+    font-size: 1.3rem;
+    border: 6px solid black;
+    box-shadow: 0 0 0 7px white;
+    width: 20rem;
+    height: 8rem;
 }
 
 .close {
@@ -46,11 +55,37 @@ input::placeholder{
     color: red;
 }
 
+#infos-interativas{
+    width: 100%;
+    height: 90%;
+    background-color: aqua;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+#infos-usuario{
+    width: 70%;
+    height: 80%;
+    background-color: green;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2rem;
+    gap: 1rem;
+    border-radius: 15px;
+    box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.233);
+}
+
+#infos-usuario h1{
+    font-family: var(--fonte2);
+    font-size: 2.5rem;
+}
 
 #header2{
     width: 100%;
-    height: 6rem;
+    height: 10%;
     background: linear-gradient(to bottom, rgb(0, 0, 0), rgba(0, 0, 0, 0));
     display: flex;
     align-items: center;;
@@ -288,12 +323,18 @@ button:hover{
         width: 100dvw;
         height: 100dvh;
     }
+
+    form label{
+        padding-left: 3rem;
+    }
+
     #header1{
-        width: 100%;
+        width: 70%;
         height: 12dvh;
-        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.162);
-        backdrop-filter: blur(70px);
-        background: linear-gradient(to right, rgba(0, 128, 0, 0.541), rgba(0, 128, 0, 0.334));
+    }
+
+    form h1{
+        display: none;
     }
 
     aside{
@@ -304,33 +345,35 @@ button:hover{
         width: 100%;
         height: 100dvh;
         justify-content: flex-start;
-        padding: 0;
-        gap: 1rem;
-        background: url(../assets/img/capa2.jpg);
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
     }
 
     form{
-        width: 80%;
-        height: 80%;
+        width: 100dvw;
+        height: 100dvh;
         align-items: center;
         justify-content: center;
-        padding: 1rem;
-        border-radius: 25px;
+        padding: 4px;
         background-color: rgba(255, 255, 255, 0.452);
         backdrop-filter: blur(40px);
         transition: 5s cubic-bezier(0.215, 0.610, 0.355, 1.000);
     }
 
-    button{
-        width: 4rem;
-        height: 3rem;
+    form h1{
+        display: none;
     }
 
-    input{
-        width: 100%;
+    button{
+        width: 3rem;
+        height: 3rem;
+        
+    }
+
+    span{
+        display: none;
+    }
+
+    /* input{
+        width: 80%;
         background-color: rgba(255, 255, 255, 0.098);
         border: none;
         border-bottom: 2.5px solid black;
@@ -341,14 +384,10 @@ button:hover{
         border: none;
         border-bottom: 2.5px solid black;
         outline: none;
-    }
-
-    form input:nth-child(1){
-        width: 100%
-    }
+    } */
 }
 
-@media (min-widht: 768px) and (max-width: 991px){
+/* @media (min-widht: 768px) and (max-width: 991px){
     article{
         padding: 0;
     }
@@ -358,4 +397,4 @@ button:hover{
         margin: 0;
         width: 100%;
     }
-}
+} */

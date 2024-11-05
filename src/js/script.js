@@ -5,7 +5,7 @@ const usuario = {
     altura: '',
     idade: '',
     telefone: '',
-    genero: '',
+    // genero: '',
     IMC: '',
     setNome: function(nome) {
         this.nome = nome;
@@ -25,16 +25,16 @@ const usuario = {
     setTelefone: function(telefone) {
         this.telefone = telefone;
     },
-    setGenero: function(genero) {
-        this.genero = genero;
-    },
+    // setGenero: function(genero) {
+    //     this.genero = genero;
+    // },
     calcIMC: function() {
         this.IMC = this.peso / (this.altura ** 2);
     },
     getDadosUsuario: function() {
         return `Os dados do usuario são: nome: ${this.nome}, idade: ${this.idade}, telefone: ${this.telefone}, email: ${this.email}`;        
     }
-};
+}
 
 // usuario.setNome(document.getElementById(`nome`).value);
 // usuario.setEmail(document.getElementById(`email`).value);
@@ -51,7 +51,7 @@ document.getElementById('formulario').addEventListener('submit', function(event)
     const idade = document.getElementById('idade').value;
     const peso = parseFloat(document.getElementById('peso').value);
     const altura = parseFloat(document.getElementById('altura').value) / 100;
-    const genero = document.getElementById('genero').value;
+    // const genero = document.getElementById('genero').value;
     const email = document.getElementById('email').value;
     const telefone = document.getElementById('telefone').value;
 
@@ -59,7 +59,7 @@ document.getElementById('formulario').addEventListener('submit', function(event)
     usuario.setIdade(idade);
     usuario.setPeso(peso);
     usuario.setAltura(altura);
-    usuario.setGenero(genero);
+    // usuario.setGenero(genero);
     usuario.setEmail(email);
     usuario.setTelefone(telefone);
 
@@ -87,6 +87,7 @@ const ficarVermelho = () =>{
 
     const corOriginal = vermelho.style.backgroundColor;
     const corTextoOriginal = vermelho.style.color;
+    document.getElementById(`infos-usuario`).style.display = `none`;
 
     vermelho.style.backgroundColor = `red`;
     vermelho.style.color = `white`;
@@ -119,12 +120,16 @@ document.getElementById('formulario').addEventListener('submit', function(event)
 
     const nome = document.getElementById('nome').value;
     const email = document.getElementById('email').value;
+    const telefone = document.getElementById('telefone').value;
 
-    function showModal(message) {
+    function showModal(message, borderColor) {
         const modal = document.getElementById('modal');
         const modalMessage = document.getElementById('modal-message');
+
         modalMessage.textContent = message;
         modal.style.display = 'flex';
+
+        document.getElementById(`modal-content`).style.borderColor = borderColor;
 
         document.getElementById('close-modal').onclick = function() {
             modal.style.display = 'none';
@@ -140,10 +145,26 @@ document.getElementById('formulario').addEventListener('submit', function(event)
         usuario.setNome(nome);
         usuario.setEmail(email);
         usuario.setTelefone(telefone);
+        // Mexer depois ////////////////////////////////////////////////////////////////////////////////////
+        // usuario.setIdade(idade);
+        // usuario.setPeso(peso);
+        // usuario.setAltura(altura);
         usuario.calcIMC();
 
-        showModal(`Cadastro realizado com sucesso! Seu IMC é: ${usuario.IMC.toFixed(2)}. Estamos preparando o melhor cardapio de acordo com seu biotipo.`);
+        showModal(`Cadastro realizado com sucesso! ✔️`, `green`);
+        document.getElementById(`infos-usuario`).style.display = `flex`;
+        exibirDados();
     } else {
-        showModal("Erro! Por favor, preencha os campos obrigatórios.");
+        showModal(`❌ Erro! Por favor, preencha os campos obrigatórios. ❌`, `red`);
     }
 });
+
+const exibirDados = () => {
+    document.getElementById(`nomeUsuario`).innerHTML = usuario.nome;
+    document.getElementById(`emailUsuario`).innerHTML = usuario.email;
+    document.getElementById(`telefoneUsuario`).innerHTML = usuario.telefone;
+    document.getElementById(`idadeUsuario`).innerHTML = usuario.idade;
+    document.getElementById(`pesoUsuario`).innerHTML = usuario.peso;
+    document.getElementById(`alturaUsuario`).innerHTML = usuario.altura;
+    document.getElementById(`imcUsuario`).innerHTML = usuario.IMC.toFixed(2);
+}

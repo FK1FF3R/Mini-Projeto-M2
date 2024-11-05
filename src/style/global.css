@@ -15,6 +15,20 @@
     --laranja: #FFA24C;
     --h1-size: 4rem;
     --label-font-size: 2rem;
+    --fonte: "Reem Kufi Ink", sans-serif;
+    --fonte2: "Montserrat Alternates", sans-serif;
 }
 
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Reem+Kufi+Ink&display=swap");
+
+h1, span, label{
+    font-family: var(--fonte);
+}
+
+input{
+    font-family: var(--fonte2);
+}
