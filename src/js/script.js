@@ -7,8 +7,6 @@ class Usuario {
         this.idade = idade || '';
         this.telefone = telefone || '';
         this.IMC = 0;
-        this.historicoPeso = [];
-        this.historicoAltura = [];
     }
 
     setNome(nome) {
@@ -39,26 +37,19 @@ class Usuario {
     }  
 }
 
-const usuarios = [];
+// const usuarios = [];
 
-const usuario1 = new Usuario();
-const usuario2 = new Usuario();
+// const usuario1 = new Usuario();
+// const usuario2 = new Usuario();
 
 const editarDados = () => {
     document.getElementById('nome').value = usuario.nome;
     document.getElementById('idade').value = usuario.idade;
     document.getElementById('peso').value = usuario.peso;
-    document.getElementById('altura').value = usuario.altura * 100; // Converter para cm se necessário
+    document.getElementById('altura').value = usuario.altura * 100;
     document.getElementById('email').value = usuario.email;
     document.getElementById('telefone').value = usuario.telefone;
 } 
-// usuario.setNome(document.getElementById(`nome`).value);
-// usuario.setEmail(document.getElementById(`email`).value);
-// usuario.setPeso(document.getElementById(`peso`).value);
-// usuario.setAltura(document.getElementById(`altura`).value);
-// usuario.setIdade(document.getElementById(`idade`).value);
-// usuario.setTelefone(document.getElementById(`telefone`).value);
-// usuario.setGenero(document.getElementById(`genero`).value);
 
 document.getElementById('formulario').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -67,7 +58,6 @@ document.getElementById('formulario').addEventListener('submit', function(event)
     const idade = document.getElementById('idade').value;
     const peso = parseFloat(document.getElementById('peso').value);
     const altura = parseFloat(document.getElementById('altura').value) / 100;
-    // const genero = document.getElementById('genero').value;
     const email = document.getElementById('email').value;
     const telefone = document.getElementById('telefone').value;
 
@@ -75,12 +65,11 @@ document.getElementById('formulario').addEventListener('submit', function(event)
     usuario.setIdade(idade);
     usuario.setPeso(peso);
     usuario.setAltura(altura);
-    // usuario.setGenero(genero);
     usuario.setEmail(email);
     usuario.setTelefone(telefone);
 
     usuario.calcIMC();
-}
+});
 
 const ficarVerde = () =>{
     const verde = document.getElementById(`enviar`);
@@ -162,18 +151,18 @@ document.getElementById('formulario').addEventListener('submit', function(event)
         usuario.setEmail(email);
         usuario.setTelefone(telefone);
         // Mexer depois ////////////////////////////////////////////////////////////////////////////////////
-        // usuario.setIdade(idade);
-        // usuario.setPeso(peso);
-        // usuario.setAltura(altura);
+        usuario.setIdade(idade);
+        usuario.setPeso(peso);
+        usuario.setAltura(altura);
         usuario.calcIMC();
 
         showModal(`Cadastro realizado com sucesso! ✔️`, `green`);
         document.getElementById(`infos-usuario`).style.display = `flex`;
-        exibirDados();
+        exibirDados(console.log);
     } else {
         showModal(`❌ Erro! Por favor, preencha os campos obrigatórios. ❌`, `red`);
     }
-}
+});
 
 const exibirDados = () => {
     document.getElementById(`nomeUsuario`).innerHTML = usuario.nome;
