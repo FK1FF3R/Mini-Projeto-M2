@@ -39,7 +39,7 @@ class Usuario {
 
 // const usuarios = [];
 
-// const usuario1 = new Usuario();
+const usuario = new Usuario();
 // const usuario2 = new Usuario();
 
 const editarDados = () => {
@@ -49,7 +49,7 @@ const editarDados = () => {
     document.getElementById('altura').value = usuario.altura * 100;
     document.getElementById('email').value = usuario.email;
     document.getElementById('telefone').value = usuario.telefone;
-} 
+};
 
 document.getElementById('formulario').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -61,15 +61,52 @@ document.getElementById('formulario').addEventListener('submit', function(event)
     const email = document.getElementById('email').value;
     const telefone = document.getElementById('telefone').value;
 
-    usuario.setNome(nome);
-    usuario.setIdade(idade);
-    usuario.setPeso(peso);
-    usuario.setAltura(altura);
-    usuario.setEmail(email);
-    usuario.setTelefone(telefone);
+    if (nome && email && telefone) {
+        usuario.setNome(nome);
+        usuario.setEmail(email);
+        usuario.setTelefone(telefone);
+        // Mexer depois ////////////////////////////////////////////////////////////////////////////////////
+        usuario.setIdade(idade);
+        usuario.setPeso(peso);
+        usuario.setAltura(altura);
+        usuario.calcIMC();
 
-    usuario.calcIMC();
+        showModal(`Cadastro realizado com sucesso! ✔️`, `green`);
+        document.getElementById(`infos-usuario`).style.display = `flex`;
+        exibirDados();
+    } else {
+        showModal(`❌ Erro! Por favor, preencha os campos obrigatórios. ❌`, `red`);
+    }
 });
+
+function showModal(message, borderColor) {
+    const modal = document.getElementById('modal');
+    const modalMessage = document.getElementById('modal-message');
+
+    modalMessage.textContent = message;
+    modal.style.display = 'flex';
+
+    document.getElementById(`modal-content`).style.borderColor = borderColor;
+
+    document.getElementById('close-modal').onclick = function() {
+        modal.style.display = 'none';
+    };
+    window.onclick = function(event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    };
+}
+
+const exibirDados = () => {
+    const nome = document.getElementById(`nomeUsuario`).innerHTML = usuario.nome;
+    document.getElementById(`emailUsuario`).innerHTML = usuario.email;
+    document.getElementById(`telefoneUsuario`).innerHTML = usuario.telefone;
+    document.getElementById(`idadeUsuario`).innerHTML = usuario.idade;
+    document.getElementById(`pesoUsuario`).innerHTML = usuario.peso;
+    document.getElementById(`alturaUsuario`).innerHTML = usuario.altura;
+    document.getElementById(`imcUsuario`).innerHTML = usuario.IMC.toFixed(2);
+};
 
 const ficarVerde = () =>{
     const verde = document.getElementById(`enviar`);
@@ -118,58 +155,4 @@ const ficarAzul = () =>{
         azul.style.backgroundColor = corOriginal;
         azul.style.color = corTextoOriginal;
     }, 500);
-}
-
-document.getElementById('formulario').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const nome = document.getElementById('nome').value;
-    const email = document.getElementById('email').value;
-    const telefone = document.getElementById('telefone').value;
-
-    function showModal(message, borderColor) {
-        const modal = document.getElementById('modal');
-        const modalMessage = document.getElementById('modal-message');
-
-        modalMessage.textContent = message;
-        modal.style.display = 'flex';
-
-        document.getElementById(`modal-content`).style.borderColor = borderColor;
-
-        document.getElementById('close-modal').onclick = function() {
-            modal.style.display = 'none';
-        };
-        window.onclick = function(event) {
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        };
-    }
-
-    if (nome && email && telefone) {
-        usuario.setNome(nome);
-        usuario.setEmail(email);
-        usuario.setTelefone(telefone);
-        // Mexer depois ////////////////////////////////////////////////////////////////////////////////////
-        usuario.setIdade(idade);
-        usuario.setPeso(peso);
-        usuario.setAltura(altura);
-        usuario.calcIMC();
-
-        showModal(`Cadastro realizado com sucesso! ✔️`, `green`);
-        document.getElementById(`infos-usuario`).style.display = `flex`;
-        exibirDados(console.log);
-    } else {
-        showModal(`❌ Erro! Por favor, preencha os campos obrigatórios. ❌`, `red`);
-    }
-});
-
-const exibirDados = () => {
-    document.getElementById(`nomeUsuario`).innerHTML = usuario.nome;
-    document.getElementById(`emailUsuario`).innerHTML = usuario.email;
-    document.getElementById(`telefoneUsuario`).innerHTML = usuario.telefone;
-    document.getElementById(`idadeUsuario`).innerHTML = usuario.idade;
-    document.getElementById(`pesoUsuario`).innerHTML = usuario.peso;
-    document.getElementById(`alturaUsuario`).innerHTML = usuario.altura;
-    document.getElementById(`imcUsuario`).innerHTML = usuario.IMC.toFixed(2);
 }
