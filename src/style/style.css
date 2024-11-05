@@ -58,7 +58,6 @@ input::placeholder{
 #infos-interativas{
     width: 100%;
     height: 90%;
-    background-color: aqua;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -67,7 +66,8 @@ input::placeholder{
 #infos-usuario{
     width: 70%;
     height: 80%;
-    background-color: green;
+    background-color: var(--cor);
+    border: 10px dashed black;
     display: none;
     flex-direction: column;
     align-items: flex-start;
@@ -81,6 +81,25 @@ input::placeholder{
 #infos-usuario h1{
     font-family: var(--fonte2);
     font-size: 2.5rem;
+}
+
+#infos-usuario span{
+    font-size: 2rem;
+}
+
+#show {
+    width: 60%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid red;
+    align-self: center;
+}
+
+#show h1{
+    font-family: var(--fonte2);
+    font-size: 3rem;
 }
 
 #header2{

@@ -1,41 +1,57 @@
-const usuario = {
-    nome: '',
-    email: '',
-    peso: '',
-    altura: '',
-    idade: '',
-    telefone: '',
-    // genero: '',
-    IMC: '',
-    setNome: function(nome) {
-        this.nome = nome;
-    },
-    setEmail: function(email) {
-        this.email = email;
-    },
-    setPeso: function(peso) {
-        this.peso = peso;
-    },
-    setAltura: function(altura) {
-        this.altura = altura;
-    },
-    setIdade: function(idade) {
-        this.idade = idade;
-    },
-    setTelefone: function(telefone) {
-        this.telefone = telefone;
-    },
-    // setGenero: function(genero) {
-    //     this.genero = genero;
-    // },
-    calcIMC: function() {
-        this.IMC = this.peso / (this.altura ** 2);
-    },
-    getDadosUsuario: function() {
-        return `Os dados do usuario são: nome: ${this.nome}, idade: ${this.idade}, telefone: ${this.telefone}, email: ${this.email}`;        
+class Usuario {
+    constructor(nome, email, peso, altura, idade, telefone) {
+        this.nome = nome || '';
+        this.email = email || '';
+        this.peso = peso || 0;
+        this.altura = altura || 0;
+        this.idade = idade || '';
+        this.telefone = telefone || '';
+        this.IMC = 0;
+        this.historicoPeso = [];
+        this.historicoAltura = [];
     }
+
+    setNome(nome) {
+        this.nome = nome;
+    }
+
+    setEmail(email) {
+        this.email = email;
+    }
+
+    setPeso(peso) {
+        this.peso = peso;
+    }
+
+    setAltura(altura) {
+        this.altura = altura;
+    }
+
+    setIdade(idade) {
+        this.idade = idade;
+    }
+
+    setTelefone(telefone) {
+        this.telefone = telefone;
+    }
+    calcIMC() {
+        this.IMC = this.peso / (this.altura ** 2);
+    }  
 }
 
+const usuarios = [];
+
+const usuario1 = new Usuario();
+const usuario2 = new Usuario();
+
+const editarDados = () => {
+    document.getElementById('nome').value = usuario.nome;
+    document.getElementById('idade').value = usuario.idade;
+    document.getElementById('peso').value = usuario.peso;
+    document.getElementById('altura').value = usuario.altura * 100; // Converter para cm se necessário
+    document.getElementById('email').value = usuario.email;
+    document.getElementById('telefone').value = usuario.telefone;
+} 
 // usuario.setNome(document.getElementById(`nome`).value);
 // usuario.setEmail(document.getElementById(`email`).value);
 // usuario.setPeso(document.getElementById(`peso`).value);
@@ -64,7 +80,7 @@ document.getElementById('formulario').addEventListener('submit', function(event)
     usuario.setTelefone(telefone);
 
     usuario.calcIMC();
-});
+}
 
 const ficarVerde = () =>{
     const verde = document.getElementById(`enviar`);
@@ -157,7 +173,7 @@ document.getElementById('formulario').addEventListener('submit', function(event)
     } else {
         showModal(`❌ Erro! Por favor, preencha os campos obrigatórios. ❌`, `red`);
     }
-});
+}
 
 const exibirDados = () => {
     document.getElementById(`nomeUsuario`).innerHTML = usuario.nome;

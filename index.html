@@ -50,7 +50,7 @@
                     
                     <div id="botoes">
                         <button type="reset" id="apagar" onclick="ficarVermelho()"><i class="bi bi-trash"></i><span>Apagar</span></button>
-                        <button type="button" id="editar" onclick="ficarAzul()"><i class="bi bi-pencil-square"></i><span>Editar</span></button>
+                        <button type="button" id="editar" onclick="editarDados()" onclick="ficarAzul()"><i class="bi bi-pencil-square"></i><span>Editar</span></button>
                         <button type="submit" id="enviar" onclick="ficarVerde()"><i class="bi bi-send"></i><span>Cadastrar</span></button>
                     </div>    
             
@@ -73,6 +73,9 @@
                 </header>
                 <div id="infos-interativas">
                     <div id="infos-usuario">
+                        <div id="show">
+                            <h1>Seus dados</h1>
+                        </div>
                         <h1>Nome: <span id="nomeUsuario"></span></h1>
                         <h1>Email: <span id="emailUsuario"></span></h1>
                         <h1>Telefone: <span id="telefoneUsuario"></span></h1>
