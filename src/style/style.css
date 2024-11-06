@@ -1,83 +1,215 @@
-/* header{
-    height: 9%;
-    width: 100%;
+body{
+    background-color: var(--cor);
     display: flex;
-    justify-content: space-between;
-    padding-left: 2rem;
-    padding-right: 2rem;
-
     align-items: center;
-    border-bottom: 2px solid rgb(0, 0, 0);
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.033);
-
-} */
-
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
     justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    backdrop-filter: blur(4px);
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
 }
 
-#modal-content {
-    background-color: #fff;
-    padding: 20px;
+/* section cadastro */
+
+#cadastro{
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 900;
-    border-radius: 5px;
+    width: 100vw;
+    height: 100vh;
+}
+
+#h1-cadastro{
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    font-family: var(--fonte2);
+    /* background-color: green none;
+    border-bottom: 2px solid red; */
+}
+
+/* Aside */
+
+aside{
+    background-image: url(../assets/img/capa2.jpg);
+    width: 50%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Botoes */
+
+.button{
+    width: 16rem;
+    height: 5rem;
+    border-radius: 5px;
+    border: 1px solid black;
+    box-shadow: 2px 2px 2px 2px rgb(0, 0, 0);
+    transition: .1s cubic-bezier(0,.98,1,0);
     font-size: 1.3rem;
-    border: 6px solid black;
-    box-shadow: 0 0 0 7px white;
-    width: 20rem;
-    height: 8rem;
+    display: flex;
+    gap: 8px;
 }
 
-.close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 20px;
+button{
+    background-color: white;
+    width: 6rem;
+    height: 4rem;
+    border-radius: 5px;
+    border: 1px solid black;
+    box-shadow: 2px 2px 2px 2px rgb(0, 0, 0);
+    transition: .1s cubic-bezier(0,.98,1,0);
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.usuario-item {
+   display: flex;
+}
+.usuario-item button{
+    align-self: flex-end;
+}
+
+.button:hover{
     cursor: pointer;
+    transform: scale(.95);
+    transition: .1s cubic-bezier(0,.98,1,0);
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-input::placeholder{
+button:hover{
+    cursor: pointer;
+    transform: scale(.95);
+    transition: .1s cubic-bezier(0,.98,1,0);
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+#botoes{
+    width: 100%;
+    height: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.editar-btn {
+    background-color: white;
+    color: #007bff;
+}
+
+#apagar,
+#enviar,
+#editar,
+#salvar-alteracoes {
+    background-color: var(--cor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10px;
+}
+
+#apagar{
+    border: 4px solid red;
     color: red;
 }
 
+#apagar:hover{
+    background-color: red;
+    color: white;
+}
+
+#editar:hover{
+    background-color: blue;
+    color: white;
+}
+
+#enviar:hover{
+    background-color: green;
+    color: white;
+}
+
+#enviar{
+    background-color: var(--cor);
+    border: 4px solid green;
+    color: green;
+}
+
+#editar{
+    border: 4px solid blue;
+    color: blue;
+}
+
+#salvar-alteracoes{
+    border: 4px solid #ffc107;
+    color: #ffc107;
+}
+
+#salvar-alteracoes:hover{
+    background-color: #ffc107;
+    color:white;
+}
+
+.editar-btn, .deletar-btn, .mostrar-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.editar-btn:hover {
+    color: blue;
+}
+
+.deletar-btn:hover {
+    color: red;
+}
+
+#fechar-caixa{
+    color: red;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    position: relative;
+    top: 0;
+    left: 95%;
+}
+
+/* Listagem de usuarios */
+
+.usuario-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
 #infos-interativas{
-    width: 100%;
+    width: 90%;
     height: 90%;
-    /* display: hidden; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: purple;
-}
-
-#lista-usuarios{
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
+    display: none;
     padding: 1rem;
-    background-color: aqua;
+    align-items: center;
+    justify-content: center;
+    border: 10px dashed black;
+    box-shadow: 0 0 0 7px black;
+    background-color: var(--cor);
 }
 
-#infos-usuario{
+lista-usuarios{
     width: 70%;
     height: 80%;
     background-color: var(--cor);
@@ -90,6 +222,26 @@ input::placeholder{
     gap: 1rem;
     border-radius: 15px;
     box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.233);
+}
+
+#infos-usuario{
+    width: auto;
+    height: auto;
+    background-color: rgb(235, 235, 98);
+    border: 10px dashed black;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2rem;
+    gap: 1rem;
+    border-radius: 15px;
+    box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.233);
+    z-index: 1;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #infos-usuario h1{
@@ -116,12 +268,121 @@ input::placeholder{
     font-size: 3rem;
 }
 
+
+/* Tirar setinhas do input number */
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Modal */
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+#modal-content {
+    background-color: #fff;
+    top: 200px;
+    left: 200px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    border-radius: 5px;
+    text-align: center;
+    font-family: var(--fonte2);
+    font-size: 1.3rem;
+    border: 6px solid black;
+    box-shadow: 0 0 0 7px white;
+    width: 20rem;
+    height: 8rem;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Formulario */
+
+form{
+    background-color: var(--cor);
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 2rem 4rem;
+    /* padding: 1rem; */
+    gap: 1rem;
+}
+
+form label{
+    padding-left: 6rem;
+    align-self: flex-start;
+}
+
+
+i{
+    font-size: 2rem;
+}
+
+label{
+    font-size: var(--label-font-size);
+}
+
+/* Input */
+
+input::placeholder{
+    color: red;
+}
+
+input{
+    height: 4%;
+    width: 70%;
+    background-color: rgba(255, 255, 255, 0.098);
+    border: none;
+    border-bottom: 2.5px solid black;
+}
+
+input:focus{
+    background-color: rgba(255, 255, 255, 0.098);
+    border: none;
+    border-bottom: 2.5px solid black;
+    outline: none;
+}
+
+/* Header */
+
 #header2{
     width: 100%;
     height: 10%;
     background: linear-gradient(to bottom, rgb(0, 0, 0), rgba(0, 0, 0, 0));
     display: flex;
     align-items: center;;
+    align-self: flex-start;
     justify-content: flex-end;
     padding-right: 2rem;
     backdrop-filter: blur(4px);
@@ -188,48 +449,7 @@ a:hover {
 }
 
 
-body{
-    background-color: var(--cor);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 100vw;
-    height: 100vh;
-}
-
-#cadastro{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-    height: 100vh;
-}
-
-/* .imagem-capa{
-    width: 100%;
-    height: 100%;
-    object-fit:cover;
-} */
-
-aside{
-    background-image: url(../assets/img/capa2.jpg);
-    width: 50%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-#h1-cadastro{
-    width: 100%;
-    height: 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    /* background-color: green none;
-    border-bottom: 2px solid red; */
-}
+/* Article */
 
 article{
     width: 50%;
@@ -249,123 +469,8 @@ h1{
     display:none;
 }
 
-form{
-    background-color: var(--cor);
-    width: 80%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
-    padding: 2rem 4rem;
-    /* padding: 1rem; */
-    gap: 1rem;
-}
 
-form label{
-    padding-left: 6rem;
-    align-self: flex-start;
-}
-
-#botoes{
-    width: 100%;
-    height: 6rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-#apagar,
-#enviar,
-#editar{
-    background-color: var(--cor);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#apagar{
-    border: 4px solid red;
-    color: red;
-}
-
-#apagar:hover{
-    background-color: red;
-    color: white;
-}
-
-#editar:hover{
-    background-color: blue;
-    color: white;
-}
-
-#enviar:hover{
-    background-color: green;
-    color: white;
-}
-
-#enviar{
-    border: 4px solid green;
-    color: green;
-}
-
-#editar{
-    border: 4px solid blue;
-    color: blue;
-}
-
-i{
-    font-size: 2rem;
-}
-
-label{
-    font-size: var(--label-font-size);
-}
-
-input{
-    height: 4%;
-    width: 70%;
-    background-color: rgba(255, 255, 255, 0.098);
-    border: none;
-    border-bottom: 2.5px solid black;
-}
-
-input:focus{
-    background-color: rgba(255, 255, 255, 0.098);
-    border: none;
-    border-bottom: 2.5px solid black;
-    outline: none;
-}
-
-/* form input:nth-of-type(1){
-    width: 50%;
-}
-
-form input:focus{  
-    border: .5px solid var(--rosa);
-    outline: none;
-} */
-
-button{
-    width: 12rem;
-    height: 4rem;
-    border-radius: 5px;
-    border: 1px solid black;
-    box-shadow: 2px 2px 2px 2px rgb(0, 0, 0);
-    transition: .1s cubic-bezier(0,.98,1,0);
-    font-size: 1.3rem;
-    display: flex;
-    gap: 8px;
-}
-
-button:hover{
-    cursor: pointer;
-    transform: scale(.95);
-    transition: .1s cubic-bezier(0,.98,1,0);
-    border: 2px solid black;
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
-}
-
+/* Responsividade */
 @media (max-width: 480px){
     body{
         width: 100dvw;
@@ -430,3 +535,87 @@ button:hover{
     }
 
 }
+
+
+/* src/style/style.css */
+
+/* Estilo para os botões */
+/* #botoes {
+    display: flex;
+    gap: 10px;
+}
+
+#botoes button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#enviar {
+    background-color: #28a745; 
+}
+
+#apagar {
+    background-color: #dc3545; 
+}
+
+#editar {
+    background-color: #007bff;
+}
+
+#salvar-alteracoes {
+    background-color: #ffc107; 
+
+#modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px;
+    text-align: center;
+}
+
+#close-modal {
+    float: right;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.usuario-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+}
+
+.usuario-item button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.editar-btn {
+    color: #007bff;
+}
+
+.deletar-btn {
+    color: #dc3545;
+} */

@@ -1,3 +1,4 @@
+// Cria o objeto de usuário
 class Usuario {
     constructor(nome, email, peso, altura, idade, telefone) {
         this.nome = nome || '';
@@ -37,92 +38,170 @@ class Usuario {
     }  
 }
 
-// const usuarios = [];
+// Cria a lista de usuários
+let editIndex = null;
 
-const usuario = new Usuario();
-// const usuario2 = new Usuario();
+const usuarios = [];
 
-const editarDados = () => {
-    document.getElementById('nome').value = usuario.nome;
-    document.getElementById('idade').value = usuario.idade;
-    document.getElementById('peso').value = usuario.peso;
-    document.getElementById('altura').value = usuario.altura * 100;
-    document.getElementById('email').value = usuario.email;
-    document.getElementById('telefone').value = usuario.telefone;
-};
+// Cria a função de salvar usuário
+const salvarUsuario = () => {
+    const nome = document.getElementById(`nome`).value;
+    const idade = document.getElementById(`idade`).value;
+    const peso = parseFloat(document.getElementById(`peso`).value);
+    const altura = parseFloat(document.getElementById(`altura`).value) / 100;
+    const email = document.getElementById(`email`).value;
+    const telefone = document.getElementById(`telefone`).value;
 
-document.getElementById('formulario').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const nome = document.getElementById('nome').value;
-    const idade = document.getElementById('idade').value;
-    const peso = parseFloat(document.getElementById('peso').value);
-    const altura = parseFloat(document.getElementById('altura').value) / 100;
-    const email = document.getElementById('email').value;
-    const telefone = document.getElementById('telefone').value;
-
-    if (nome && email && telefone) {
-        usuario.setNome(nome);
-        usuario.setEmail(email);
-        usuario.setTelefone(telefone);
-        // Mexer depois ////////////////////////////////////////////////////////////////////////////////////
-        usuario.setIdade(idade);
-        usuario.setPeso(peso);
-        usuario.setAltura(altura);
+    if (nome && email && telefone && idade && peso && altura) {
+        const usuario = new Usuario(nome, email, peso, altura, idade, telefone);
         usuario.calcIMC();
-
+        usuarios.push(usuario);
+        listarUsuarios();
         showModal(`Cadastro realizado com sucesso! ✔️`, `green`);
-        document.getElementById(`infos-usuario`).style.display = `flex`;
-        exibirDados();
+        limparFormulario();
     } else {
         showModal(`❌ Erro! Por favor, preencha os campos obrigatórios. ❌`, `red`);
     }
-});
-
-function showModal(message, borderColor) {
-    const modal = document.getElementById('modal');
-    const modalMessage = document.getElementById('modal-message');
-
-    modalMessage.textContent = message;
-    modal.style.display = 'flex';
-
-    document.getElementById(`modal-content`).style.borderColor = borderColor;
-
-    document.getElementById('close-modal').onclick = function() {
-        modal.style.display = 'none';
-    };
-    window.onclick = function(event) {
-        if (event.target === modal) {
-            modal.style.display = 'none';
-        }
-    };
-}
-
-const exibirDados = () => {
-    const nome = document.getElementById(`nomeUsuario`).innerHTML = usuario.nome;
-    document.getElementById(`emailUsuario`).innerHTML = usuario.email;
-    document.getElementById(`telefoneUsuario`).innerHTML = usuario.telefone;
-    document.getElementById(`idadeUsuario`).innerHTML = usuario.idade;
-    document.getElementById(`pesoUsuario`).innerHTML = usuario.peso;
-    document.getElementById(`alturaUsuario`).innerHTML = usuario.altura;
-    document.getElementById(`imcUsuario`).innerHTML = usuario.IMC.toFixed(2);
 };
 
+// Cria a funcao de listar usuários
+const listarUsuarios = () => {
+    const lista = document.getElementById(`lista-usuarios`);
+    lista.innerHTML = ``;
+
+    usuarios.forEach((usuario, index) => {
+        const item = document.createElement(`li`);
+        item.classList.add(`usuario-item`);
+
+        const nomeSpan = document.createElement(`span`);
+        nomeSpan.textContent = usuario.nome;
+
+        const mostrarBtn = document.createElement(`button`);
+        mostrarBtn.innerHTML = `<i class="bi bi-eye"></i>`;
+        mostrarBtn.onclick = () => exibirDetalhesUsuario(index);
+        mostrarBtn.classList.add(`mostrar-btn`);
+        mostrarBtn.style.backgroundColor = `purple`;
+        mostrarBtn.style.color = `var(--cor)`;
+
+        const editarBtn = document.createElement(`button`);
+        editarBtn.innerHTML = `<i class="bi bi-pencil-square"></i>`;
+        editarBtn.onclick = () => editarDados(index);
+        editarBtn.classList.add(`editar-btn`);
+        editarBtn.style.backgroundColor = `blue`;
+        editarBtn.style.color = `var(--cor)`;
+
+        const deletarBtn = document.createElement(`button`);
+        deletarBtn.innerHTML = `<i class="bi bi-trash"></i>`;
+        deletarBtn.onclick = () => excluirUsuario(index);
+        deletarBtn.classList.add(`deletar-btn`);
+        deletarBtn.style.backgroundColor = `red`;
+        deletarBtn.style.color = `var(--cor)`;
+
+        item.appendChild(nomeSpan);
+        item.appendChild(mostrarBtn);
+        item.appendChild(editarBtn);
+        item.appendChild(deletarBtn);
+        lista.appendChild(item);
+    });
+};
+
+
+// Cria a função para exibir o detalhes do usuário
+const exibirDetalhesUsuario = (index) => {
+    const usuario = usuarios[index];
+    document.getElementById(`nomeUsuario`).textContent = usuario.nome;
+    document.getElementById(`emailUsuario`).textContent = usuario.email;
+    document.getElementById(`telefoneUsuario`).textContent = usuario.telefone;
+    document.getElementById(`idadeUsuario`).textContent = usuario.idade || ` `;
+    document.getElementById(`pesoUsuario`).textContent = usuario.peso || ` `;
+    document.getElementById(`alturaUsuario`).textContent = usuario.altura || ` `;
+    document.getElementById(`imcUsuario`).textContent = usuario.IMC.toFixed(2) || ` `;
+    document.getElementById(`infos-usuario`).style.display = `block`;
+};
+
+// Cria a função para editar o usuário
+const editarDados = (index) => {
+    editIndex = index;
+    const usuario = usuarios[index];
+    document.getElementById(`nome`).value = usuario.nome;
+    document.getElementById(`idade`).value = usuario.idade;
+    document.getElementById(`peso`).value = usuario.peso;
+    document.getElementById(`altura`).value = usuario.altura * 100;
+    document.getElementById(`email`).value = usuario.email;
+    document.getElementById(`telefone`).value = usuario.telefone;
+
+    document.getElementById(`enviar`).style.display = `none`;
+    document.getElementById(`salvar-alteracoes`).style.display = `inline-block`;
+};
+
+// Cria a função para salvar as alterações
+const salvarAlteracoes = () => {
+    if (editIndex === null) return;
+    const usuario = usuarios[editIndex];
+
+    usuario.setNome(document.getElementById(`nome`).value);
+    usuario.setEmail(document.getElementById(`email`).value);
+    usuario.setTelefone(document.getElementById(`telefone`).value);
+    usuario.setIdade(document.getElementById(`idade`).value);
+    usuario.setPeso(parseFloat(document.getElementById(`peso`).value));
+    usuario.setAltura(parseFloat(document.getElementById(`altura`).value) / 100);
+
+    usuario.calcIMC();
+    listarUsuarios();
+    showModal(`Alterações salvas com sucesso! ✔️`, `green`);
+    limparFormulario();
+};
+
+// Cria a função para excluir o usuário
+const excluirUsuario = (index) => {
+    usuarios.splice(index, 1);
+    listarUsuarios();
+    showModal(`Usuário excluído com sucesso. ❌`, `red`);
+};
+
+// Cria a função para limpar o formulário depois de salvar
+const limparFormulario = () => {
+    document.getElementById(`formulario`).reset();
+    document.getElementById(`enviar`).style.display = `inline-block`;
+    document.getElementById(`salvar-alteracoes`).style.display = `none`;
+    editIndex = null;
+};
+
+// Cria a função para mostrar o modal
+const showModal = (message, color) => {
+    const modal = document.getElementById(`modal`);
+    const modalMessage = document.getElementById(`modal-message`);
+    modalMessage.textContent = message;
+    modalMessage.style.color = color;
+    modal.style.display = `flex`;
+    setTimeout(() => modal.style.display = `none`, 2000);
+};
+
+// Cria a função para enviar o formulário a partir do evento de submit
+document.getElementById(`formulario`).addEventListener(`submit`, (event) => {
+    event.preventDefault();
+    document.getElementById('infos-interativas').style.display = `flex`;
+    if (editIndex === null) {
+        salvarUsuario();
+    } else {
+        salvarAlteracoes();
+    }
+});
+
+// Cria as funções para transformar os botoes para vermelho, verde e azul 
 const ficarVerde = () =>{
     const verde = document.getElementById(`enviar`);
-
     const corOriginal = verde.style.backgroundColor;
     const corTextoOriginal = verde.style.color;
-
     verde.style.backgroundColor = `green`;
     verde.style.color = `white`;
     verde.style.transition = `.5s`;
-
     setTimeout(() => {
         verde.style.backgroundColor = corOriginal;
         verde.style.color = corTextoOriginal;
     }, 500);
 }
+
 
 const ficarVermelho = () =>{
     const vermelho = document.getElementById(`apagar`);
@@ -155,4 +234,9 @@ const ficarAzul = () =>{
         azul.style.backgroundColor = corOriginal;
         azul.style.color = corTextoOriginal;
     }, 500);
+}
+
+// Cria a função para fechar o popUp
+fecharPopUp = () =>{
+    setTimeout(() => document.getElementById(`infos-usuario`).style.display = `none`, 300);
 }
