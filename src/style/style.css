@@ -207,6 +207,7 @@ button:hover{
     border: 10px dashed black;
     box-shadow: 0 0 0 7px black;
     background-color: var(--cor);
+    overflow: auto;
 }
 
 lista-usuarios{
