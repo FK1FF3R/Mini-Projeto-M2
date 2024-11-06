@@ -1,20 +1,135 @@
-body{
+
+body {
+    margin: 0;
+    font-family: var(--fonte);
     background-color: var(--cor);
+    color: #333;
     width: 100vw;
     height: 100vh;
 }
 
-header{
-    height: 9%;
-    width: 100%;
+header {
     display: flex;
-    justify-content: space-between;
-    padding-left: 2rem;
-    padding-right: 2rem;
     align-items: center;
-    border-bottom: 2px solid rgb(0, 0, 0);
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.033);
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: var(--cor);
+    border-bottom: 2px solid var(--verde);
+    width: 100%;
+    height: 9%;
 }
+
+main{
+    width: 100%;
+    height: 81%;
+}
+
+nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+ul>li{
+    display: inline-block;
+    font-size: 1.3rem;
+    padding: 1rem;
+}
+
+nav #voltar{
+    width: 6rem;
+    height: 2.5rem;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    background-color: var(--rosa);
+    box-shadow: 2px 2px 2px 2px rgb(0, 0, 0);
+    transition: .1s cubic-bezier(0,.98,1,0);
+    border: 1px solid black;
+}
+
+#voltar a{
+    text-decoration:none;
+}
+
+#voltar:hover{
+    cursor: pointer;
+    transform: scale(.95);
+    border: 2px solid black;
+    transition: .1s cubic-bezier(0,.98,1,0);
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.contact-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: var(--cor);
+}
+
+.contact-section h1 {
+    font-size: var(--h1-size);
+    color: var(--laranja);
+}
+
+.contact-section p {
+    font-size: 1.5rem;
+    color: #666;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 80%;
+    max-width: 500px;
+    margin: 1rem auto;
+}
+
+.contact-form label {
+    font-size: var(--label-font-size);
+    color: #333;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.submit-button {
+    padding: 0.8rem;
+    background-color: var(--laranja);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-family: var(--fonte2);
+}
+
+.submit-button:hover {
+    background-color: #e68a3f;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--verde);
+    border-top: 2px solid var(--rosa);
+    font-size: 1rem;
+    color: #666;
+    width: 100%;
+    height: 10%;
+}
+
 
 #img-logo{
     width: 6rem;
@@ -67,4 +182,4 @@ a:hover {
 
 #under-rosa{
     text-decoration-color: var(--rosa);
-}
+} 
